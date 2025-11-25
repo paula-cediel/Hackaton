@@ -27,23 +27,15 @@ function cargarProductos() {
   contenedor.innerHTML = productos.map(prod => `
     <div class="col-md-4 col-lg-3">
       <div class="card-product h-100">
-        
         <span class="badge bg-primary position-absolute m-2">${prod.tag}</span>
-
         <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
-
         <div class="card-body">
           <h5 class="product-title">${prod.nombre}</h5>
-
           <div class="rating">${renderStars(prod.rating)}</div>
-
           <p class="product-desc">${prod.desc}</p>
-
           <div class="d-flex justify-content-between align-items-center mt-3">
             <span class="fw-bold">$${prod.precio}</span>
-            <button class="btn-add agregar-carrito" data-id="${prod.id}">
-              Agregar
-            </button>
+            <button class="btn-add agregar-carrito" data-id="${prod.id}">Agregar</button>
           </div>
         </div>
       </div>
@@ -102,28 +94,42 @@ function mostrarToast(texto) {
   }, 2000);
 }
 
-// ⭐ EVENTO: AGREGAR AL CARRITO
+// ⭐ EVENTOS
 document.addEventListener("click", e => {
+  // Agregar al carrito
   if (e.target.classList.contains("agregar-carrito")) {
     const id = Number(e.target.dataset.id);
     const prod = productos.find(p => p.id === id);
-
     carrito.push(prod);
     actualizarCarrito();
     mostrarToast("Producto agregado al carrito");
   }
 
+  // Borrar del carrito
   if (e.target.classList.contains("borrar")) {
     const id = Number(e.target.dataset.id);
     carrito = carrito.filter(p => p.id !== id);
     actualizarCarrito();
-    mostrarToast("Eliminado del carrito");
+    mostrarToast("Producto eliminado del carrito");
   }
 });
 
-
+// ⭐ VACIAR CARRITO
 document.getElementById("vaciar-carrito").addEventListener("click", () => {
   carrito = [];
   actualizarCarrito();
   mostrarToast("Carrito vacío");
 });
+
+// ⭐ FINALIZAR COMPRA
+function finalizarCompra() {
+  if (carrito.length === 0) {
+    alert("El carrito está vacío.");
+    return;
+  }
+  const totalCompra = carrito.reduce((a, b) => a + b.precio, 0).toFixed(2);
+  alert(`Gracias por tu compra de $${totalCompra}!`);
+  carrito = [];
+  actualizarCarrito();
+}
+document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
