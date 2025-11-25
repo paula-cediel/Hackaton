@@ -1,0 +1,126 @@
+:root{
+  --bg:#0b0f12;
+  --panel:#0f1720;
+  --accent:#2dd36f; /* verde energético */
+  --muted:#aeb6bf;
+  --glass: rgba(255,255,255,0.03);
+}
+
+/* Reset simple */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Inter", Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #071018 100%);
+  color: #e6eef3;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Navbar brand */
+.brand-mark{
+  background: linear-gradient(90deg,#00ff9d,#00d1ff);
+  width:32px;height:32px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;color:#021;
+  font-weight:700;
+}
+.brand-text{font-weight:700;font-size:1.05rem}
+
+/* HERO */
+.hero{
+  padding:6rem 0;
+  background: linear-gradient(180deg, rgba(19,22,24,0.35), rgba(6,8,10,0.35)), url('images/hero.jpg') center/cover no-repeat;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.btn-cta{
+  background: linear-gradient(90deg,var(--accent), #00d1ff);
+  border: none; color: #021; font-weight:700;
+  padding: .6rem 1.1rem; border-radius: 10px;
+}
+.btn-cta:hover{transform: translateY(-3px); transition: .18s}
+
+/* Hero small icons */
+.hero-icons .hero-item{
+  background: rgba(255,255,255,0.03);
+  padding:12px 18px;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:6px; width:110px;
+}
+.hero-item i{color:var(--accent)}
+.hero-item small{color:var(--muted)}
+
+/* Section title */
+.section-title{
+  color: #eaf7ee; letter-spacing:.2px; font-weight:700;
+}
+
+/* Product cards */
+.card-product{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px; overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.card-product:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+}
+
+/* Product image */
+.card-product img{
+  width:100%; height:200px; object-fit:cover;
+  display:block;
+  background: linear-gradient(90deg,#0f1720,#071018);
+}
+
+/* Info */
+.card-body .tag{
+  display:inline-block;padding:.2rem .5rem;border-radius:8px;font-size:.75rem;
+  background: rgba(255,255,255,0.03); color:var(--muted); margin-bottom:.5rem;
+}
+.product-title{font-weight:700; color:#f3fff7}
+.product-desc{color:var(--muted); font-size:.9rem}
+
+/* Rating */
+.rating{color: #ffd166; font-size:.9rem; margin-bottom:.4rem}
+
+/* Add button */
+.btn-add{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color:var(--accent); font-weight:700; border-radius:10px;
+  transition: all .18s;
+}
+.btn-add:active{transform:scale(.98)}
+
+/* Fly image */
+.fly-img{
+  position:absolute; width:90px; height:90px; border-radius:10px; object-fit:cover;
+  transition: all .8s cubic-bezier(.2,.9,.2,1); z-index:1200;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+}
+
+/* Cart box */
+#carrito-box{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:10px; border:1px solid rgba(255,255,255,0.03);
+}
+
+/* Service card */
+.service-card{
+  background: white; color:#062021; border-radius:12px; padding:1.6rem;
+  transition: transform .2s; box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+.service-card:hover{transform: translateY(-8px)}
+
+/* Toast */
+.toast-notification{
+  position: fixed; right: 20px; bottom: 20px; background: rgba(3,12,7,0.85);
+  color: #dfffe8; padding: 12px 16px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transform: translateY(12px); opacity: 0; transition: all .35s ease;
+  z-index:1500;
+}
+
+/* small responsive tweaks */
+@media (max-width:768px){
+  .hero{padding:3.5rem 0}
+  .card-product img{height:160px}
+}
