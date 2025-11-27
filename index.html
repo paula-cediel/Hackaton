@@ -238,7 +238,7 @@ function finalizarCompra(){
   alert(`Gracias por tu compra de $${carrito.reduce((a,b)=>a+b.precio,0).toFixed(2)}!`);
   vaciarCarrito();
 }
-
+    
 function mostrarToast(texto){
   toast.textContent = texto;
   toast.style.opacity = 1;
